@@ -1,0 +1,178 @@
+{
+  "budget_plan": "แผนงบประมาณ",
+  "my_budget_plan": "แผนงบประมาณของฉัน",
+  "budget_category": {
+    "all": "ทั้งหมด",
+    "revenue": "รายได้",
+    "expense": "รายจ่าย",
+    "project": "โครงการ"
+  },
+  "header": {
+    "board": "บอร์ด",
+    "planing": "แผน",
+    "plan": "การวางแผน",
+    "report": "รายงาน",
+    "configuration": "ตั้งค่า",
+    "budget_year": "ปีงบประมาณ",
+    "version": "เวอชั่น"
+  },
+  "Board": {
+    "title": "แผนงานงบประมาณทั้งหมด"
+  },
+  "menu": {
+    "group": {
+      "revenue": {
+        "topic": "รายได้ (Revenue)",
+        "desc": "การวางแผนหรือประมาณการในส่วนของรายได้"
+      },
+      "expense": {
+        "topic": "รายจ่าย (Expense)",
+        "desc": "การวางแผนหรือประมาณการในส่วนของรายได้"
+      },
+      "project": {
+        "topic": "โครงการ (Project)",
+        "desc": "การวางแผนหรือประมาณการในส่วนของโครงการ"
+      }
+    },
+    "opex": "รายจ่ายประจำ (Opex)",
+    "capex": "รายจ่ายลงทุน (Capex)",
+    "project": {
+      "topic": "โครงการ",
+      "detail": "การวางแผนหรือประมาณการในส่วนของโครงการ",
+      "heading": "โครงการทั่วไป"
+    },
+    "revenue": {
+      "topic": "รายได้",
+      "detail": "ประมาณการ รายได้/รายรับ",
+      "heading": "รายได้/รายรับ (Revenue)"
+    },
+    "revenue_allowcate": {
+      "topic": "จัดสรรรายได้",
+      "detail": "จัดสรร รายได้/รายรับ",
+      "heading": "จัดสรรรายได้ (Revenue Allocation)"
+    },
+    "employee": {
+      "topic": "งบบุคลากร",
+      "detail": "ประมาณการ งบบุคลากร",
+      "heading": "รายจ่าย (Expense) - งบบุคลากร"
+    },
+    "material_cost": {
+      "topic": "ค่าวัสดุ",
+      "detail": "ประมาณการ ค่าวัสดุตามหมวด",
+      "heading": "รายจ่าย (Expense) - ค่าวัสดุ"
+    },
+    "lump_sum_wage": {
+      "topic": "ค่าจ้างเหมา",
+      "detail": "ประมาณการ ค่าเช่า ค่าจ้างเหมาบริการ",
+      "heading": "รายจ่าย (Expense) - ค่าจ้างเหมา"
+    },
+    "vehicle_repair": {
+      "topic": "ค่าซ่อมแซม",
+      "detail": "ประมาณการ ค่าซ่อมแซมต่าง ๆ",
+      "heading": "รายจ่าย (Expense) - ค่าซ่อมแซม"
+    },
+    "utilities_costs": {
+      "topic": "ค่าสาธารณูปโภค",
+      "detail": "ประมาณการ ค่าน้ำ ค่าไฟ ค่าโทรศัพท์ ค่าไปรษณีย์ และอื่น ๆ",
+      "heading": "รายจ่าย (Expense) - ค่าสาธารณูปโภค"
+    },
+    "durable_goods": {
+      "topic": "ครุภัณฑ์",
+      "detail": "ประมาณการค่าใช้จ่าย ความต้องการครุภัณฑ์ต่าง ๆ",
+      "heading": "รายจ่าย (Expense) - ครุภัณฑ์"
+    },
+    "land_and_construction": {
+      "topic": "ที่ดินและสิ่งก่อสร้าง",
+      "detail": "ประมาณการค่าใช้จ่าย ที่ดิน อาคาร และสิ่งก่อสร้าง",
+      "heading": "รายจ่าย (Expense) - ที่ดินและสิ่งก่อสร้าง"
+    }
+  },
+  "doc_status": {
+    "0": "รอดำเนินการ",
+    "1": "สมบรูณ์",
+    "2": "ยกเลิก"
+  },
+  "tool": {
+    "calculation_options": "ตัวเลือกการคำนวณ"
+  },
+  "aggrid": {
+    "copy_row": "คัดลอกรายการ",
+    "delete_row": "ลบรายการ",
+    "edit_row": "แก้ไขรายการ"
+  },
+  "calculator": {
+    "calculator_helper": "ตัวช่วยคำนวณ",
+    "calculator_helper_desc": "ตัวช่วยในการคำนวณข้อมูล",
+    "adjust": "ปรับค่า",
+    "replace": "แทนค่า"
+  },
+  "addItem": "เพิ่มรายการ",
+  "setting": "ตั้งค่า",
+  "edit": "แก้ไข",
+  "delete": "ลบ",
+  "copy": "คัดลอก",
+  "ok": "ตกลง",
+  "save": "บันทึก",
+  "pendingSave": "กำลังบันทึก...",
+  "verify": "ตรวจสอบ",
+  "submit": "ส่งช้อมูล",
+  "cancel": "ยกเลิก",
+  "allocate": "จัดสรร",
+  "customName": {
+    "label": "sdfsdfsdf"
+  },
+  "success": {
+    "update": "บันทึกสำเร็จ"
+  },
+  "error": {
+    "update": "บันทึกไม่สำเร็จ"
+  },
+  "please_fill_in_all_required_fields": "กรุณากรอกข้อมูลให้ครบถ้วน",
+  "creation": "สร้างเมื่อ",
+  "create_budget_plan": "กรุณากรอกรายละเอียดเพื่อสร้างแผนงบประมาณ",
+  "fields": {
+    "no": "ลำดับ",
+    "title": "ชื่อรายการ",
+    "company": "บริษัท",
+    "contract_no": "เลขที่สัญญาจ้าง",
+    "service_type": "ประเภท",
+    "budget_account_code": "รหัสบัญชีงบประมาณ",
+    "budget_statement": "รายการงบประมาณ",
+    "total": "ราคารวม",
+    "cost_center": "หน่วยงาน",
+    "budget_strategy": "ยุทธศาสตร์",
+    "fund_source": "แหล่งเงิน",
+    "fund_group": "หมวดรายได้/รายจ่าย",
+    "budget_plan": "แผนงบประมาณ",
+    "fund_type": "ประเภทเงิน",
+    "sub_fund_type": "ประเภทเงินย่อย",
+    "budget_activity": "กิจกรรมงบประมาณ",
+    "sub_fund_group": "หมวดรายได้/รายจ่ายย่อย",
+    "budget_output": "ผลผลิต/โครงการ",
+    "fund_account": "บัญชีงบประมาณ",
+    "employee_type": "รายละเอียดการจ้าง",
+    "salary_raise_category": "ประเภทการจ้าง",
+    "position": "ตำแหน่ง",
+    "duration": "ระยะเวลา (เดือน)",
+    "quantity": "จำนวน (คน)",
+    "rate": "อัตราจ้าง (บาท/เดือน)",
+    "rate_table": "อัตราจ้าง",
+    "project_name": "ชื่องาน / โครงการ",
+    "employee_salary_raise": "ว่าง / คนครอง",
+    "durable_title": "รายการ",
+    "durable_uom": "หน่วยนับ",
+    "durable_fund_account": "ประเภทครุภัณฑ์",
+    "per_price": "ราคาต่อหน่วย (บาท)",
+    "kpi_quantity_name": "ชื่อตัวชึ้วัดเชิงปริมาณ",
+    "kpi_quantity_uom": "หน่วยนับตัวชี้วัดเชิงปริมาณ",
+    "project_owner_name": "ชื่อเจ้าของโครงการ",
+    "project_owner_position": "ตำแหน่งเจ้าของโครงการ",
+    "project_owner_phone_number": "โทรศัพท์มือถือเจ้าของโครงการ",
+    "project_coordinator_phone_number": "ชื่อผู้ประสานงานโครงการ",
+    "project_coordinator_name": "โทรศัพท์มือถือผู้ประสานงานโครงการ",
+    "project_reason": "หลักการและเหตุผล",
+    "vehicle_type": "ประเภทรถยนต์",
+    "license_plate": "เลขทะเบียน",
+    "engine_size": "ขนาดเครื่องยนต์"
+  }
+}

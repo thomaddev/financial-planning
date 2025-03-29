@@ -1,0 +1,4 @@
+[submodule "packages/vise-kit"]
+	path = packages/vise-kit
+	url = https://gitlab.nerves-cloud.com/vse/vise-turbo-wrapper/vise-kit.git
+	branch = dev

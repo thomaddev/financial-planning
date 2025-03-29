@@ -1,0 +1,55 @@
+@font-face {
+  font-family: 'Kanit-Regular';
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Kanit/Kanit-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Kanit/Kanit-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Kanit-SemiBold';
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Kanit/Kanit-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Kanit-Medium';
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Kanit/Kanit-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Sarabun-Semibold';
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Sarabun/Sarabun-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Sarabun-Regular';
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Sarabun/Sarabun-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Sarabun';
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Sarabun/Sarabun-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Sarabun-Medium';
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Sarabun/Sarabun-Medium.ttf') format('truetype');
+}

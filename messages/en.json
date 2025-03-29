@@ -1,0 +1,142 @@
+{
+  "budget_plan": "Budget Plan",
+  "my_budget_plan": "My Budget Planning",
+  "budget_category": {
+    "all": "all",
+    "revenue": "Revenue",
+    "expense": "Expense",
+    "project": "Project"
+  },
+  "Header": {
+    "board": "Board",
+    "planing": "Planing",
+    "plan": "Plan",
+    "report": "Report",
+    "configuration": "Configuration"
+  },
+  "Board": {
+    "title": "Budgetplans"
+  },
+  "menu": {
+    "revenue": {
+      "topic": "รายได้",
+      "detail": "ประมาณการ รายได้/รายรับ",
+      "heading": "รายได้ (Revenue)"
+    },
+    "revenue_allowcate": {
+      "topic": "จัดสรรรายได้",
+      "detail": "จัดสรร รายได้/รายรับ",
+      "heading": "จัดสรรรายได้ (Revenue Allocation)"
+    },
+    "employee": {
+      "topic": "งบบุคลากร",
+      "detail": "ประมาณการความต้องการของบุคลากร",
+      "heading": "รายจ่าย (Expense) - งบบุคลากร"
+    },
+    "operating-budget": {
+      "topic": "",
+      "detail": "",
+      "heading": "รายจ่าย (Expense) "
+    },
+    "material_code": {
+      "topic": "ค่าวัสดุ",
+      "detail": "ประมาณการ ค่าวัสดุตามหมวด",
+      "heading": "รายจ่าย (Expense) - ค่าวัสดุ"
+    },
+    "lump_sum_wage": {
+      "topic": "ค่าจ้างเหมา",
+      "detail": "ประมาณการ ค่าเช่า ค่าจ้างเหมาบริการ",
+      "heading": "รายจ่าย (Expense) - ค่าจ้างเหมา"
+    },
+    "vehicle_repair": {
+      "topic": "ค่าซ่อมแซม",
+      "detail": "ประมาณการ ค่าซ่อมแซมต่าง ๆ",
+      "heading": "รายจ่าย (Expense) - ค่าซ่อมแซม"
+    },
+    "utilities_costs": {
+      "topic": "ค่าสาธารณูปโภค",
+      "detail": "ประมาณการ ค่าน้ำ ค่าไฟ ค่าโทรศัพท์ ค่าไปรษณีย์ และอื่น ๆ",
+      "heading": "รายจ่าย (Expense) - ค่าสาธารณูปโภค"
+    },
+    "durable_goods": {
+      "topic": "ครุภัณฑ์",
+      "detail": "ประมาณการค่าใช้จ่าย ความต้องการครุภัณฑ์ต่าง ๆ",
+      "heading": "รายจ่าย (Expense) - ครุภัณฑ์"
+    },
+    "land_and_construction": {
+      "topic": "ที่ดินและสิ่งก่อสร้าง",
+      "detail": "ประมาณการค่าใช้จ่าย ที่ดิน อาคาร และสิ่งก่อสร้าง",
+      "heading": "รายจ่าย (Expense) - ที่ดินและสิ่งก่อสร้าง"
+    }
+  },
+  "doc_status": {
+    "0": "Waiting",
+    "1": "Complete",
+    "2": "Cancel"
+  },
+  "tool": {
+    "calculation_options": "Calculation Options"
+  },
+  "aggrid": {
+    "copy_row": "Copy row",
+    "delete_row": "Delete row",
+    "edit_row": "Edit row"
+  },
+  "calculator": {
+    "calculator_helper": "Calculation",
+    "calculator_helper_desc": "Calculation helper",
+    "adjust": "Adjust",
+    "replace": "Replace"
+  },
+  "addItem": "Add item",
+  "setting": "ตั้งค่า",
+  "edit": "Edit",
+  "delete": "delete",
+  "copy": "Copy",
+  "ok": "OK",
+  "save": "Save",
+  "pendingSave": "Saving...",
+  "verify": "Verify",
+  "submit": "Submit",
+  "cancel": "Cancel",
+  "allocate": "Allocate",
+  "budget_year": "Budget Year",
+  "version": "Version",
+  "success": {
+    "update": "Update successful"
+  },
+  "error": {
+    "update": "Update unsuccessful"
+  },
+  "please_fill_in_all_required_fields": "Please fill in all the required fields",
+  "create_budget_plan": "Please fill in all the required fields to create a budget plan",
+  "fields": {
+    "no": "No.",
+    "title": "Title",
+    "company": "Company",
+    "contract_no": "Contract No.",
+    "service_type": "Type",
+    "budget_account_code": "Budget Account Code",
+    "budget_statement": "Budget Statement",
+    "total": "Total",
+    "cost_center": "Cost center",
+    "budget_strategy": "Budget Strategy",
+    "fund_source": "Fund Source",
+    "fund_group": "Fund Group",
+    "budget_plan": "Budget Plan",
+    "fund_type": "Fund Type",
+    "sub_fund_type": "Sub Fund Type",
+    "budget_activity": "Budget Activity",
+    "sub_fund_group": "Sub Fund Group",
+    "budget_output": "Budget Output",
+    "fund_account": "Fund Account",
+    "employee_type": "Employee Type",
+    "salary_raise_category": "Salary Raise Category",
+    "position": "Position",
+    "duration": "Duration",
+    "quantity": "Quantity",
+    "rate": "Rate",
+    "project_name": "Project name",
+    "employee_salary_raise": "ว่าง / คนครอง"
+  }
+}

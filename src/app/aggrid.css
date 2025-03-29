@@ -1,0 +1,29 @@
+/*Aggrid*/
+.ag-header-cell-text {
+  white-space: break-spaces;
+  font-family: var(--font-family-Kanit-Regular);
+}
+
+.ag-header-cell-text,
+.ag-group-value,
+.ag-cell,
+.ag-header-group-text {
+  font-size: 12px;
+  font-family: var(--font-family-Kanit-Regular);
+}
+
+.ag-header-cell.center-aligned-header .ag-header-cell-label {
+  justify-content: center;
+}
+
+.ag-pinned-left-cols-container .ag-row {
+  background-color: white;
+}
+
+.ag-center-cols-viewport .ag-row {
+  background-color: var(--background-default-secondary);
+}
+
+.ag-header .docstatus .ag-header-cell-label {
+  justify-content: center;
+}

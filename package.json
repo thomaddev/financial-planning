@@ -1,0 +1,53 @@
+{
+  "name": "budget-planning",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test:setup-auth": "npx playwright test tests/setup-auth.spec.ts",
+    "test:e2e:ui": "npx playwright test --ui"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.1",
+    "@mui/material": "^6.4.1",
+    "@mui/x-date-pickers": "^7.24.1",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@tanstack/react-query": "^5.66.0",
+    "@vise/kit": "file:packages/vise-kit",
+    "ag-grid-community": "^32.3.3",
+    "ag-grid-enterprise": "^32.3.3",
+    "ag-grid-react": "^32.3.3",
+    "autoprefixer": "^10.4.20",
+    "dhtmlx-gantt": "^9.0.3",
+    "next": "15.2.3",
+    "next-auth": "^4.24.11",
+    "next-intl": "^3.26.3",
+    "query-string": "^9.1.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.5.1",
+    "uuid": "^11.0.5",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@playwright/test": "^1.51.0",
+    "@tanstack/react-query-devtools": "^5.66.9",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.7",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.3",
+    "postcss": "^8.5.1",
+    "prettier": "^3.5.0",
+    "tailwindcss": "^4.0.3",
+    "typescript": "^5"
+  }
+}

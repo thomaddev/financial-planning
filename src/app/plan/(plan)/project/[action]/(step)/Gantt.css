@@ -1,0 +1,12 @@
+html,
+body,
+#root,
+#root div:only-child,
+.gantt-container {
+  height: 100%;
+  font-family: var(--font-family-Kanit-Regular);
+}
+
+.gantt_cal_light {
+  font-family: var(--font-family-Kanit-Regular);
+}

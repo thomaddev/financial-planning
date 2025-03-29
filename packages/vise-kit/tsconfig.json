@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+       "@vise/kit": ["src/index.ts"],
+        "@vise/kit/*": ["src/*"]  // Allow internal imports
+      },
+      "jsx": "react-jsx",  // Add this line to enable JSX support
+      "allowJs": true,
+      "strict": true,
+      "module": "ESNext",
+      "moduleResolution": "Node",
+      "esModuleInterop": true
+    }
+  }
+  
