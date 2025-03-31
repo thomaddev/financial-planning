@@ -24,11 +24,10 @@ import { usePlanFormStore } from '@/lib/stores/planFormStore'
 import { removeDuplicates } from '@vise/kit/utils'
 import dayjs from 'dayjs'
 import 'dayjs/locale/th' // นำเข้า locale ภาษาไทย
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import { Switch } from '@mui/material'
 import { FIELD_MONTHS } from '@/data'
-import { useGetBudgetPlans, useSubmitMultiPlanning } from '@/lib/api/planning'
 import { generateGridCurrent, generateGridPlan } from '@/components/aggrids/utilities'
+import mockData from '@/data/mock_board.json'
 
 const InputFilter = dynamic(() => import('@/components/aggrids/InputFilter'), {
   ssr: false,
@@ -73,13 +72,6 @@ export default function Home() {
     gridRef.current!.api.setFilterModel(filtered)
   }, [])
 
-  // const toggleMonthColumns = useCallback(() => {
-  //   const currentVisibility = gridRef.current?.api?.getColumn('january')?.isVisible() ?? true // ตรวจสอบสถานะจากคอลัมน์แรก
-  //   gridRef.current?.api?.setColumnsVisible(MONTH_FEILD, !currentVisibility)
-  // }, [])
-
-  const { mutateAsync: submitPlan } = useSubmitMultiPlanning()
-
   const t = useTranslations()
   const router = useRouter()
   const categoryQuery = useSearchParams().get('cate')
@@ -93,8 +85,11 @@ export default function Home() {
 
   const monthValueSetter = useCallback((params: any, field: string) => {
     const { data, colDef, newValue } = params
-    const sumOfM1ToM12 = Object.keys(data).filter((value) => FIELD_MONTHS.includes(value))
-    const summary = removeDuplicates([...sumOfM1ToM12, field]).reduce((acc, fieldName) => {
+    const sumOfMonths = Object.keys(data).filter((value) => 
+      ['january', 'february', 'march', 'april', 'may', 'june', 
+       'july', 'august', 'september', 'october', 'november', 'december'].includes(value)
+    )
+    const summary = removeDuplicates([...sumOfMonths, field]).reduce((acc, fieldName) => {
       let fieldValue = data[fieldName] || 0
       if (colDef.field === fieldName) {
         fieldValue = newValue
@@ -210,11 +205,9 @@ export default function Home() {
     setAnchorEl(null)
   }
 
-  const { data: listPlanning, isLoading: isLoadingListPlanning } = useGetBudgetPlans(
-    selectedCategory,
-    page,
-    pageSize,
-  )
+  // Remove the useGetBudgetPlans hook and replace with mock data
+  const listPlanning = mockData
+  const isLoadingListPlanning = false
 
   // Column Definitions: Defines the columns to be displayed.
   const defaultColDef: ColDef = {
@@ -388,7 +381,17 @@ export default function Home() {
 
   const submitMultiPlanning = async () => {
     try {
-      await submitPlan(rowSelect)
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Update the mock data to reflect the submission
+      mockData.data = mockData.data.map(item => {
+        if (rowSelect.includes(item.record_name)) {
+          return { ...item, docstatus: 1 };
+        }
+        return item;
+      });
+
       // deselect all rows
       gridRef.current?.api.deselectAll()
       setRowSelect([])

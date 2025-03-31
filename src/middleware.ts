@@ -9,7 +9,7 @@ export async function middleware(request: NextRequest) {
 
   if (!token && !isAuthPage) {
     // Redirect to login if not authenticated
-    return NextResponse.redirect(new URL('/api/auth/signin', request.url))
+    return NextResponse.redirect(new URL('/login', request.url))
   }
 
   if (token && isAuthPage) {
@@ -25,6 +25,6 @@ export const config = {
   matcher: [
     '/',
     '/(th|en)/:path*',
-    '/((?!api|_next|_vercel|auth|oauth-callback|.*\\..*).*)', // Ensure `auth` and `oauth-callback` are excluded
+    '/((?!api|_next|_vercel|auth|oauth-callback|login|.*\\..*).*)', // Ensure `auth`, `oauth-callback`, and `login` are excluded
   ],
 }
