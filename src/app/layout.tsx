@@ -62,7 +62,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Providers session={session} licenseKey={encryptedLicense}>
           <NextIntlClientProvider messages={messages}>
             <Toaster />
-            <Header />
             {children}
             {process.env.NODE_ENV === 'development' && (
               <ReactQueryDevtools initialIsOpen={false} position="left" />

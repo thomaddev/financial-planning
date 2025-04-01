@@ -3,6 +3,7 @@ import Sidebar from '@/components/Sidebar'
 import { usePathname } from 'next/navigation'
 import React, { ReactNode, useEffect } from 'react'
 import { usePlanFormStore } from '@/lib/stores/planFormStore'
+import Header from '@/components/Header'
 const LayoutPlan = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname()
   const { resetPlan } = usePlanFormStore()
@@ -15,6 +16,8 @@ const LayoutPlan = ({ children }: { children: ReactNode }) => {
 
   return (
     <React.Fragment>
+            <Header />
+
       <div className="flex h-[calc(100vh-var(--header-height))]">
         <Sidebar />
         <div className="flex-1">{children}</div>
