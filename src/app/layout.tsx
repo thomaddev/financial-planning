@@ -1,7 +1,6 @@
 'use server'
 import fs from 'fs'
 import path from 'path'
-import crypto from 'crypto'
 import { getSession } from '@/auth'
 import Providers from './providers'
 import './globals.css'
@@ -10,19 +9,20 @@ import { NextIntlClientProvider } from 'next-intl'
 import { Toaster } from 'react-hot-toast'
 import dynamic from 'next/dynamic'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-const Header = dynamic(() => import('@/components/Header'))
 
 // **Encrypt the license key before passing it to the client**
 const encryptLicenseKey = (licenseKey: string) => {
-  const algorithm = 'aes-256-cbc'
-  const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY!
-  const iv = crypto.randomBytes(16)
+  // return mock data
+  return { iv: '1234567890', encryptedData: '1234567890' }
+  // const algorithm = 'aes-256-cbc'
+  // const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY!
+  // const iv = crypto.randomBytes(16)
 
-  const cipher = crypto.createCipheriv(algorithm, Buffer.from(secretKey, 'hex'), iv)
-  let encrypted = cipher.update(licenseKey, 'utf8', 'hex')
-  encrypted += cipher.final('hex')
+  // const cipher = crypto.createCipheriv(algorithm, Buffer.from(secretKey, 'hex'), iv)
+  // let encrypted = cipher.update(licenseKey, 'utf8', 'hex')
+  // encrypted += cipher.final('hex')
 
-  return { iv: iv.toString('hex'), encryptedData: encrypted }
+  // return { iv: iv.toString('hex'), encryptedData: encrypted }
 }
 
 // Get Aggrid License from file in secret folder

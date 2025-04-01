@@ -10,7 +10,6 @@ import { FrappeAPIProvider } from '@vise/kit'
 import { useEffect, useMemo, useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { LicenseManager } from 'ag-grid-enterprise'
-import crypto from 'crypto'
 
 
 export default function Providers({
@@ -30,12 +29,14 @@ export default function Providers({
     try {
       // **Decrypt the license key**
       const decryptLicenseKey = (encryptedData: string, iv: string) => {
-        const algorithm = 'aes-256-cbc';
-        const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY!; // Use the same secret key
-        const decipher = crypto.createDecipheriv(algorithm, Buffer.from(secretKey, 'hex'), Buffer.from(iv, 'hex'));
-        let decrypted = decipher.update(encryptedData, 'hex', 'utf8');
-        decrypted += decipher.final('utf8');
-        return decrypted;
+        // return mock data
+        return '1234567890';
+        // const algorithm = 'aes-256-cbc';
+        // const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY!; // Use the same secret key
+        // const decipher = crypto.createDecipheriv(algorithm, Buffer.from(secretKey, 'hex'), Buffer.from(iv, 'hex'));
+        // let decrypted = decipher.update(encryptedData, 'hex', 'utf8');
+        // decrypted += decipher.final('utf8');
+        // return decrypted;
       };
 
       // Decrypt and set license
