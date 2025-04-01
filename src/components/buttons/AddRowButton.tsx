@@ -4,11 +4,12 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  IconButton,
+  TextField,
 } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
-import { JsonFormFrappe, FormAction } from '@vise/kit'
+import { FormAction } from '@vise/kit'
 import { useTranslations } from 'next-intl'
+import Grid from '@mui/material/Grid2'
 
 interface AddRowButtonProps {
   className?: string
@@ -36,7 +37,6 @@ export default function AddRowButton({
   docStatus,
 }: AddRowButtonProps) {
   const t = useTranslations()
-  //#9DA2AA
   return (
     <>
       <button
@@ -55,12 +55,16 @@ export default function AddRowButton({
       <Dialog open={isDialogOpen} onClose={onCloseDialog} maxWidth="lg" fullWidth>
         <DialogTitle>{t('addItem')}</DialogTitle>
         <DialogContent>
-          <JsonFormFrappe
-            formAction={formAction}
-            doctype={docType}
-            formData={formData}
-            onChange={(data) => onChangeFormDataGrid(data)}
-          />
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 12 }}>
+              <TextField
+                fullWidth
+                label="Title"
+                value={formData?.title || ''}
+                onChange={(e) => onChangeFormDataGrid({ ...formData, title: e.target.value })}
+              />
+            </Grid>
+          </Grid>
         </DialogContent>
         <DialogActions>
           <Button onClick={onCloseDialog} color="secondary">

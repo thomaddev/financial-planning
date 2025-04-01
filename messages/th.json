@@ -173,6 +173,9 @@
     "project_reason": "หลักการและเหตุผล",
     "vehicle_type": "ประเภทรถยนต์",
     "license_plate": "เลขทะเบียน",
-    "engine_size": "ขนาดเครื่องยนต์"
+    "engine_size": "ขนาดเครื่องยนต์",
+    "strategy": "ยุทธศาสตร์",
+    "activity": "กิจกรรม",
+    "objective": "เป้าหมาย"
   }
 }

@@ -11,7 +11,27 @@ export const usePlanningService = () => {
     },
 
     savePlanning: async (data: Partial<Planning>): Promise<Planning> => {
-      return frappe.callMethod('vise_budget_planning.api.v1.planning.save_planning', data, 'PUT')
+      // Get existing data from localStorage
+      const existingData = localStorage.getItem('planningData')
+      const planningData = existingData ? JSON.parse(existingData) : []
+      
+      // Create new entry with timestamp
+      const newEntry = {
+        ...data,
+        id: Date.now(), // Use timestamp as unique ID
+        gridId: Date.now(),
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      }
+      
+      // Add new entry to the array
+      planningData.push(newEntry)
+      
+      // Save back to localStorage
+      localStorage.setItem('planningData', JSON.stringify(planningData))
+      
+      // Return the new entry as if it was saved to the API
+      return newEntry as Planning
     },
 
     submitPlanning: async (id: string): Promise<Planning> => {

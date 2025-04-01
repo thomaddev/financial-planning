@@ -137,6 +137,9 @@
     "quantity": "Quantity",
     "rate": "Rate",
     "project_name": "Project name",
-    "employee_salary_raise": "ว่าง / คนครอง"
+    "employee_salary_raise": "Employee Salary Raise",
+    "strategy": "Strategy",
+    "activity": "Activity",
+    "objective": "Objective"
   }
 }

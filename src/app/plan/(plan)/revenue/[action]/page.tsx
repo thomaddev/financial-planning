@@ -1,7 +1,7 @@
 'use client'
 import { useCallback, useMemo, useRef, useEffect, useState } from 'react'
 import { Box } from '@mui/material'
-import { currencyFormatterForAggrid, removeDuplicates } from '@vise/kit'
+import { removeDuplicates } from '@vise/kit'
 import { AgGridReact } from 'ag-grid-react'
 import { ColDef } from 'ag-grid-community'
 import { useTranslations } from 'next-intl'
@@ -46,7 +46,6 @@ export default function Revenue() {
   const {
     formHeader,
     rowData,
-    submitting,
     setRowData,
     setGridRef,
     setSubmitting,
@@ -142,9 +141,7 @@ export default function Revenue() {
       return acc + Number(fieldValue)
     }, 0)
 
-    const quantity = data.template_link_detail.quantity || 0
-    const perPrice = data.template_link_detail.per_price || 0
-    const year1Value = quantity * perPrice
+    const year1Value = data.year_1 || 0
 
     if (summary <= year1Value) {
       params.data[field] = newValue
@@ -223,40 +220,15 @@ export default function Revenue() {
         maxWidth: 120,
       },
       {
-        headerName: t('fields.budget_account_code'),
-        field: 'template_link_detail.fund_account.title',
+        headerName: t('fields.title'),
+        field: 'template_link_detail.title',
         minWidth: 160,
         maxWidth: 160,
         editable: false,
       },
-      {
-        headerName: t('fields.project_name'),
-        field: 'template_link_detail.project_name',
-        minWidth: 700,
-        maxWidth: 700,
-        editable: false,
-      },
-      {
-        headerName: t('fields.quantity'),
-        field: 'template_link_detail.quantity',
-        minWidth: 150,
-        editable: () => true,
-        aggFunc: 'sum',
-        valueSetter: calculateValueSetter,
-      },
-      {
-        headerName: t('fields.per_price'),
-        field: 'template_link_detail.per_price',
-        minWidth: 150,
-        editable: () => true,
-        aggFunc: 'sum',
-        valueSetter: calculateValueSetter,
-      },
       ...generateGridCurrent(
         {
           monthValueSetter: monthValueSetter,
-          currentYearGetter:
-            'getValue("template_link_detail.per_price") * getValue("template_link_detail.quantity")',
         },
         gridRef,
         false,

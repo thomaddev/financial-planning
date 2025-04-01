@@ -1,5 +1,5 @@
 'use client'
-import Grid2 from '@mui/material/Grid2'
+import Grid from '@mui/material/Grid2'
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
 import MoneyOffIcon from '@mui/icons-material/MoneyOff'
 import GroupIcon from '@mui/icons-material/Group'
@@ -18,14 +18,14 @@ import {
   DialogActions,
   Button,
   Typography,
+  TextField,
+  Box,
+  Grid2,
 } from '@mui/material'
 import { SvgIconComponent } from '@mui/icons-material'
 import { useState } from 'react'
-import { JsonFormFrappe } from '@vise/kit/json-form-render'
-import { EXCLUDE_FIELDS_EMPLOYEE } from '@/data/excludeFields'
 import { useRouter } from 'next/navigation'
 import { usePlanFormStore } from '@/lib/stores/planFormStore'
-import { useTranslations } from 'next-intl'
 import { getDataTestAttr } from '@/utils/helper'
 
 interface CardItemProps {
@@ -40,6 +40,12 @@ function CardItem({ href, Icon, title, description }: CardItemProps) {
   const router = useRouter()
   const { formHeader, setFormHeader } = usePlanFormStore()
   const [open, setOpen] = useState(false)
+  const [formData, setFormData] = useState({
+    company: '',
+    strategy: '',
+    activity: '',
+    objective: ''
+  })
 
   const handleClickOpen = () => {
     setFormHeader({})
@@ -50,12 +56,16 @@ function CardItem({ href, Icon, title, description }: CardItemProps) {
     setOpen(false)
   }
 
-  const handleFormUpdate = (updatedData: any) => {
-    setFormHeader(updatedData)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
   }
 
   const handleSubmit = () => {
-    setFormHeader(formHeader)
+    setFormHeader(formData)
     router.push(`${href}/new`)
     setOpen(false)
   }
@@ -77,7 +87,7 @@ function CardItem({ href, Icon, title, description }: CardItemProps) {
   }
 
   return (
-    <Grid2 size={{ xs: 12, sm: 12, md: 6, lg: 4 }}>
+    <Grid size={{ xs: 12, sm: 12, md: 6, lg: 4 }}>
       <CardActionArea
         onClick={handleClickOpen}
         sx={{
@@ -121,19 +131,135 @@ function CardItem({ href, Icon, title, description }: CardItemProps) {
             <h5>{title}</h5>
           </div>
           <Typography variant="caption" color="text.secondary">{description}</Typography>
-          </DialogTitle>
+        </DialogTitle>
         <DialogContent dividers>
-          <div  className="overflow-y-auto">
-            <div>
-              <JsonFormFrappe
-                doctype="Budget Planning"
-                formData={formHeader}
-                onChange={handleFormUpdate}
-                excludeFields={EXCLUDE_FIELDS_EMPLOYEE}
-                formAction={'create'}
-              />
-            </div>
-          </div>
+          <Box className="overflow-y-auto  ">
+            <Grid container spacing={3}>
+              <Grid size={{ xs: 6 }}>
+                <TextField
+                  fullWidth
+                  label="Company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
+                      '& fieldset': {
+                        borderColor: 'var(--border-default-default)',
+                      },
+                      '&:hover fieldset': {
+                        borderColor: 'var(--border-default-hover)',
+                      },
+                      '&.Mui-focused fieldset': {
+                        borderColor: 'var(--border-default-focus)',
+                      },
+                    },
+                    '& .MuiInputLabel-root': {
+                      color: 'var(--text-default-secondary)',
+                      '&.Mui-focused': {
+                        color: 'var(--text-default-default)',
+                      },
+                    },
+                  }}
+                />
+              </Grid>
+
+              <Grid size={{ xs: 6 }}>
+                <TextField
+                  fullWidth
+                  label="Strategy"
+                  name="strategy"
+                  value={formData.strategy}
+                  onChange={handleChange}
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
+                      '& fieldset': {
+                        borderColor: 'var(--border-default-default)',
+                      },
+                      '&:hover fieldset': {
+                        borderColor: 'var(--border-default-hover)',
+                      },
+                      '&.Mui-focused fieldset': {
+                        borderColor: 'var(--border-default-focus)',
+                      },
+                    },
+                    '& .MuiInputLabel-root': {
+                      color: 'var(--text-default-secondary)',
+                      '&.Mui-focused': {
+                        color: 'var(--text-default-default)',
+                      },
+                    },
+                  }}
+                />
+              </Grid>
+
+              <Grid size={{ xs: 6 }}>
+                <TextField
+                  fullWidth
+                  label="Activity"
+                  name="activity"
+                  value={formData.activity}
+                  onChange={handleChange}
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
+                      '& fieldset': {
+                        borderColor: 'var(--border-default-default)',
+                      },
+                      '&:hover fieldset': {
+                        borderColor: 'var(--border-default-hover)',
+                      },
+                      '&.Mui-focused fieldset': {
+                        borderColor: 'var(--border-default-focus)',
+                      },
+                    },
+                    '& .MuiInputLabel-root': {
+                      color: 'var(--text-default-secondary)',
+                      '&.Mui-focused': {
+                        color: 'var(--text-default-default)',
+                      },
+                    },
+                  }}
+                />
+              </Grid>
+
+              <Grid size={{ xs: 6 }}>
+                <TextField
+                  fullWidth
+                  label="Objective"
+                  name="objective"
+                  value={formData.objective}
+                  onChange={handleChange}
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
+                      '& fieldset': {
+                        borderColor: 'var(--border-default-default)',
+                      },
+                      '&:hover fieldset': {
+                        borderColor: 'var(--border-default-hover)',
+                      },
+                      '&.Mui-focused fieldset': {
+                        borderColor: 'var(--border-default-focus)',
+                      },
+                    },
+                    '& .MuiInputLabel-root': {
+                      color: 'var(--text-default-secondary)',
+                      '&.Mui-focused': {
+                        color: 'var(--text-default-default)',
+                      },
+                    },
+                  }}
+                />
+              </Grid>
+            </Grid>
+          </Box>
         </DialogContent>
         <DialogActions>
           <Button
@@ -156,7 +282,7 @@ function CardItem({ href, Icon, title, description }: CardItemProps) {
           </Button>
         </DialogActions>
       </Dialog>
-    </Grid2>
+    </Grid>
   )
 }
 
@@ -245,31 +371,31 @@ export default function CreatePlanPage() {
       {/* Revenue Section */}
       <div className="mb-8">
         <h2 className="text-(length:--titlecontent-size) mb-[18px]">รายได้/รายรับ (Revenue)</h2>
-        <Grid2 container spacing={2.875}>
+        <Grid container spacing={2.875}>
           {revenueItems.map((item, index) => (
             <CardItem key={`${item.href}-${index}`} {...item} />
           ))}
-        </Grid2>
+        </Grid>
       </div>
 
       {/* Expenses Section */}
       <div className="mb-8">
         <h2 className="text-(length:--titlecontent-size) mb-[18px]">รายจ่าย (Expense)</h2>
-        <Grid2 container spacing={2.875}>
+        <Grid container spacing={2.875}>
           {expenseItems.map((item, index) => (
             <CardItem key={`${item.href}-${index}`} {...item} />
           ))}
-        </Grid2>
+        </Grid>
       </div>
 
       {/* Projects Section */}
       <div>
         <h2 className="text-(length:--titlecontent-size) mb-[18px]">โครงการ (Project)</h2>
-        <Grid2 container spacing={2.875}>
+        <Grid container spacing={2.875}>
           {projectItems.map((item, index) => (
             <CardItem key={`${item.href}-${index}`} {...item} />
           ))}
-        </Grid2>
+        </Grid>
       </div>
     </div>
   )

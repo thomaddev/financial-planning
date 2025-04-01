@@ -135,7 +135,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           width: '100%',
-          marginBottom: '1rem',
+          marginBottom: '0px',
           label: {
             position: 'relative',
             // display: 'none',
@@ -163,7 +163,7 @@ const theme = createTheme({
             boxShadow: '0px 1px 2px 0px rgba(16, 24, 40, 0.05)',
             padding: '0',
             marginTop: 0,
-            marginBottom: '20px',
+            marginBottom: '0px',
             input: {
               fontSize: 'var(--text-base)',
               padding: 'var(--input-padding)',
