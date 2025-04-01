@@ -27,7 +27,7 @@ export default function Header() {
           alignItems={'center'}
           sx={{ height: '100%', paddingX: 5 }}
         >
-          <Grid size={{ sm: 2 }}>
+          <Grid size={{ sm: 1 }}>
             <Link href="/" className="block relative w-full h-[29px] flex items-center">
               <Image
                 src="/images/vise_logo.svg"
@@ -51,7 +51,7 @@ export default function Header() {
           >
             <nav className="flex gap-18 items-center">
               <Link
-                href="/plan"
+                href="/plan/my-board"
                 className={`text-[length:var(--size-scale01)] transition-all 
                   text-[var(--text-default-default)] font-['Kanit-Regular']
                   hover:font-['Kanit-Medium'] ${
@@ -60,7 +60,7 @@ export default function Header() {
               >
                 {t('plan')}
               </Link>
-              <Link
+              {/* <Link
                 href="/report"
                 className={`text-[length:var(--size-scale01)] transition-all 
                   text-[var(--text-default-default)] font-['Kanit-Regular']
@@ -79,7 +79,7 @@ export default function Header() {
                   }`}
               >
                 {t('configuration')}
-              </Link>
+              </Link> */}
             </nav>
           </Grid>
           <Grid
