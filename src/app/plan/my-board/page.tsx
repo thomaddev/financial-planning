@@ -25,10 +25,9 @@ import { removeDuplicates } from '@vise/kit/utils'
 import dayjs from 'dayjs'
 import 'dayjs/locale/th' // นำเข้า locale ภาษาไทย
 import { Switch } from '@mui/material'
-import { FIELD_MONTHS } from '@/data'
 import { generateGridCurrent, generateGridPlan } from '@/components/aggrids/utilities'
+import { getPlanningData } from '@/lib/services/planningService'
 import mockData from '@/data/mock_board.json'
-
 const InputFilter = dynamic(() => import('@/components/aggrids/InputFilter'), {
   ssr: false,
 })
@@ -41,9 +40,6 @@ const CustomGroupCellRenderer = dynamic(
     ssr: false,
   },
 )
-const DropdownMenu = dynamic(() => import('@/components/buttons/DropdownMenu'), {
-  ssr: false,
-})
 const ActionButton = dynamic(() => import('@/components/buttons/ActionButton'), {
   ssr: false,
 })
@@ -205,8 +201,8 @@ export default function Home() {
     setAnchorEl(null)
   }
 
-  // Remove the useGetBudgetPlans hook and replace with mock data
-  const listPlanning = mockData
+  // Replace mockData with getPlanningData()
+  const listPlanning = getPlanningData(mockData)
   const isLoadingListPlanning = false
 
   // Column Definitions: Defines the columns to be displayed.
@@ -322,9 +318,9 @@ export default function Home() {
 
   const tabs = [
     { value: 'all', label: 'ทั้งหมด', count: listPlanning?.total || 0 },
-    { value: 'revenue', label: 'รายได้', count: listPlanning?.revenue_count || 0 },
-    { value: 'expense', label: 'รายจ่าย', count: listPlanning?.expense_count || 0 },
-    { value: 'project', label: 'โครงการ', count: listPlanning?.project_count || 0 },
+    // { value: 'revenue', label: 'รายได้', count: listPlanning?.revenue_count || 0 },
+    // { value: 'expense', label: 'รายจ่าย', count: listPlanning?.expense_count || 0 },
+    // { value: 'project', label: 'โครงการ', count: listPlanning?.project_count || 0 },
   ]
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -384,23 +380,33 @@ export default function Home() {
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Update the mock data to reflect the submission
-      mockData.data = mockData.data.map(item => {
-        if (rowSelect.includes(item.record_name)) {
-          return { ...item, docstatus: 1 };
-        }
-        return item;
-      });
+      // Get current data
+      const currentData = getPlanningData()
+      
+      // Update the data
+      const updatedData = {
+        ...currentData,
+        data: currentData.data.map(item => {
+          if (rowSelect.includes(item.record_name)) {
+            return { ...item, docstatus: 1 };
+          }
+          return item;
+        })
+      };
+      
+      // Save to localStorage
+      localStorage.setItem('planningData', JSON.stringify(updatedData));
 
       // deselect all rows
-      gridRef.current?.api.deselectAll()
-      setRowSelect([])
+      gridRef.current?.api.deselectAll();
+      setRowSelect([]);
+      
+      // Close any open dialogs
+      handleClose();
     } catch (error) {
-      console.error('Failed to submit planning:', error)
-    } finally {
-      handleClose()
+      console.error('Failed to submit planning:', error);
     }
-  }
+  };
 
   return (
     <Box className="flex flex-col h-full ">
@@ -410,7 +416,7 @@ export default function Home() {
             {t('my_budget_plan')}
           </Typography>
         </Box>
-        <Box>
+        <Box className="hidden">
           <Box className="flex items-center gap-4">
             <Switch checked={isVerify} onChange={() => setIsVerify(!isVerify)} />
             {isVerify && (

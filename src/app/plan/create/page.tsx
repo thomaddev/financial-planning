@@ -347,20 +347,6 @@ export default function CreatePlanPage() {
     },
   ]
 
-  const projectItems = [
-    {
-      href: '/plan/project',
-      Icon: DescriptionIcon,
-      title: 'โครงการประเภท 1',
-      description: 'งบประมาณที่จัดสรรเพื่อการดำเนินการโครงการ',
-    },
-    {
-      href: '/plan/project',
-      Icon: DescriptionIcon,
-      title: 'โครงการประเภท 2',
-      description: 'งบประมาณที่จัดสรรเพื่อการดำเนินการโครงการ',
-    },
-  ]
 
   return (
     <div className="py-[33px] px-[39px] w-full lg:w-[75%]">
@@ -383,16 +369,6 @@ export default function CreatePlanPage() {
         <h2 className="text-(length:--titlecontent-size) mb-[18px]">รายจ่าย (Expense)</h2>
         <Grid container spacing={2.875}>
           {expenseItems.map((item, index) => (
-            <CardItem key={`${item.href}-${index}`} {...item} />
-          ))}
-        </Grid>
-      </div>
-
-      {/* Projects Section */}
-      <div>
-        <h2 className="text-(length:--titlecontent-size) mb-[18px]">โครงการ (Project)</h2>
-        <Grid container spacing={2.875}>
-          {projectItems.map((item, index) => (
             <CardItem key={`${item.href}-${index}`} {...item} />
           ))}
         </Grid>

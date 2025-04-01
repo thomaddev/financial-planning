@@ -423,7 +423,6 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           padding: '34px 21px 20px 21px',
-          overflow: 'hidden',
         },
       },
     },
