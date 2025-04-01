@@ -151,6 +151,7 @@ export default function RevenueAllocate() {
     return false
   }, [])
 
+
   const columnDefs = useMemo<ColDef[]>(
     () => [
       {
@@ -186,25 +187,12 @@ export default function RevenueAllocate() {
         minWidth: 100,
         maxWidth: 120,
       },
-      // {
-      //   headerName: t('fields.budget_account_code'),
-      //   field: 'template_link_detail.fund_account.title',
-      //   minWidth: 160,
-      //   maxWidth: 160,
-      //   editable: false,
-      // },
       {
-        headerName: t('fields.project_name'),
-        field: 'template_link_detail.project_name',
-        minWidth: 700,
-        maxWidth: 700,
+        headerName: t('fields.title'),
+        field: 'template_link_detail.title',
+        minWidth: 160,
+        maxWidth: 160,
         editable: false,
-        cellStyle: (params) => {
-          if (params?.data?.level > 1) {
-            return { left: `${12 * params?.data?.level}px` }
-          }
-          return null
-        },
       },
       ...generateGridCurrent(
         {

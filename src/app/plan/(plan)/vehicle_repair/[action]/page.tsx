@@ -152,6 +152,7 @@ export default function VehicleRepair() {
     return false
   }, [])
 
+
   const columnDefs = useMemo<ColDef[]>(
     () => [
       {
@@ -188,36 +189,8 @@ export default function VehicleRepair() {
         maxWidth: 120,
       },
       {
-        headerName: t('fields.budget_account_code'),
-        field: 'template_link_detail.fund_account.title',
-        minWidth: 160,
-        maxWidth: 160,
-        editable: false,
-      },
-      {
         headerName: t('fields.title'),
         field: 'template_link_detail.title',
-        minWidth: 700,
-        maxWidth: 700,
-        editable: false,
-      },
-      {
-        headerName: t('fields.vehicle_type'),
-        field: 'template_link_detail.vehicle_type',
-        minWidth: 160,
-        maxWidth: 160,
-        editable: false,
-      },
-      {
-        headerName: t('fields.license_plate'),
-        field: 'template_link_detail.license_plate',
-        minWidth: 160,
-        maxWidth: 160,
-        editable: false,
-      },
-      {
-        headerName: t('fields.engine_size'),
-        field: 'template_link_detail.engine_size',
         minWidth: 160,
         maxWidth: 160,
         editable: false,

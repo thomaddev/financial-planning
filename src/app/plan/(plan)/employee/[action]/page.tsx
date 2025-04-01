@@ -144,10 +144,7 @@ export default function Employee() {
       return acc + Number(fieldValue)
     }, 0)
 
-    const quantity = data.template_link_detail.quantity || 0
-    const employmentRate = data.template_link_detail.rate || 0
-    const periodMonth = data.template_link_detail.duration || 0
-    const year1Value = quantity * employmentRate * periodMonth
+    const year1Value = data.year_1 || 0
 
     if (summary <= year1Value) {
       params.data[field] = newValue
@@ -159,6 +156,7 @@ export default function Employee() {
     params.data[field] = data[field] ?? 0
     return false
   }, [])
+
 
   const calculateValueSetter = useCallback((params: any) => {
     const { data, colDef, newValue } = params
@@ -230,71 +228,15 @@ export default function Employee() {
         maxWidth: 120,
       },
       {
-        headerName: t('fields.budget_account_code'),
-        field: 'template_link_detail.fund_account.title',
+        headerName: t('fields.title'),
+        field: 'template_link_detail.title',
         minWidth: 160,
         maxWidth: 160,
         editable: false,
       },
-      {
-        headerName: t('fields.salary_raise_category'),
-        field: 'template_link_detail.salary_raise_category',
-        minWidth: 150,
-        editable: false,
-      },
-      {
-        headerName: t('fields.employee_salary_raise'),
-        field: 'template_link_detail.employee_type',
-        minWidth: 150,
-        editable: false,
-      },
-      {
-        headerName: t('fields.position'),
-        field: 'template_link_detail.position',
-        minWidth: 290,
-        maxWidth: 350,
-        flex: 1,
-        editable: false,
-      },
-      {
-        headerName: t('fields.quantity'),
-        field: 'template_link_detail.quantity',
-        minWidth: 130,
-        maxWidth: 140,
-        type: 'rightAligned',
-        editable: () => true,
-        aggFunc: 'sum',
-        valueSetter: calculateValueSetter,
-      },
-      {
-        headerName: t('fields.rate_table'),
-        field: 'template_link_detail.rate',
-        minWidth: 130,
-        maxWidth: 140,
-        type: 'rightAligned',
-        editable: () => true,
-        valueSetter: calculateValueSetter,
-        valueFormatter: currencyFormatterForAggrid,
-        aggFunc: 'sum',
-      },
-      {
-        headerName: t('fields.duration'),
-        field: 'template_link_detail.duration',
-        minWidth: 130,
-        maxWidth: 140,
-        type: 'rightAligned',
-        editable: () => true,
-        valueFormatter: adornmentFormatter,
-        cellRendererParams: { endAdornment: 'เดือน' },
-        valueSetter: calculateValueSetter,
-        aggFunc: 'sum',
-      },
       ...generateGridCurrent(
         {
           monthValueSetter: monthValueSetter,
-          currentYearGetter:
-            'getValue("template_link_detail.rate") * getValue("template_link_detail.quantity") * getValue("template_link_detail.duration")',
-          autoCalculate: true,
         },
         gridRef,
         false,

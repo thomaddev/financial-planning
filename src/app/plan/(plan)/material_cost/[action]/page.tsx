@@ -189,17 +189,10 @@ export default function MaterialCost() {
         maxWidth: 120,
       },
       {
-        headerName: t('fields.budget_account_code'),
-        field: 'template_link_detail.fund_account.title',
-        minWidth: 160,
-        maxWidth: 160,
-        editable: false,
-      },
-      {
         headerName: t('fields.title'),
         field: 'template_link_detail.title',
-        minWidth: 700,
-        maxWidth: 700,
+        minWidth: 160,
+        maxWidth: 160,
         editable: false,
       },
       ...generateGridCurrent(

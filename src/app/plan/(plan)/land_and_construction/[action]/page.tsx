@@ -152,6 +152,7 @@ export default function LandAndConstruction() {
     return false
   }, [])
 
+
   const columnDefs = useMemo<ColDef[]>(
     () => [
       {
@@ -188,23 +189,10 @@ export default function LandAndConstruction() {
         maxWidth: 120,
       },
       {
-        headerName: t('fields.budget_account_code'),
-        field: 'template_link_detail.fund_account.title',
-        minWidth: 160,
-        maxWidth: 160,
-        editable: false,
-      },
-      {
         headerName: t('fields.title'),
         field: 'template_link_detail.title',
-        minWidth: 700,
-        maxWidth: 700,
-        editable: false,
-      },
-      {
-        headerName: t('fields.quantity'),
-        field: 'template_link_detail.quantity',
-        minWidth: 150,
+        minWidth: 160,
+        maxWidth: 160,
         editable: false,
       },
       ...generateGridCurrent(

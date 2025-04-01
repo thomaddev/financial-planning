@@ -142,9 +142,7 @@ export default function DurableGoods() {
       return acc + Number(fieldValue)
     }, 0)
 
-    const quantity = data.template_link_detail.quantity_request || 0
-    const perPrice = data.template_link_detail.per_price || 0
-    const year1Value = quantity * perPrice
+    const year1Value = data.year_1 || 0
 
     if (summary <= year1Value) {
       params.data[field] = newValue
@@ -156,6 +154,7 @@ export default function DurableGoods() {
     params.data[field] = data[field] ?? 0
     return false
   }, [])
+
 
   const calculateValueSetter = useCallback((params: any) => {
     const { data, colDef, newValue } = params
@@ -223,47 +222,15 @@ export default function DurableGoods() {
         maxWidth: 120,
       },
       {
-        headerName: t('fields.budget_account_code'),
-        field: 'template_link_detail.fund_account.title',
+        headerName: t('fields.title'),
+        field: 'template_link_detail.title',
         minWidth: 160,
         maxWidth: 160,
         editable: false,
       },
-      {
-        headerName: t('fields.durable_title'),
-        field: 'template_link_detail.title',
-        minWidth: 700,
-        maxWidth: 700,
-        editable: false,
-      },
-      {
-        headerName: t('fields.durable_uom'),
-        field: 'template_link_detail.uom',
-        minWidth: 150,
-        editable: false,
-        aggFunc: 'sum',
-      },
-      {
-        headerName: 'จำนวน',
-        field: 'template_link_detail.quantity_request',
-        minWidth: 150,
-        editable: () => true,
-        valueSetter: calculateValueSetter,
-        aggFunc: 'sum',
-      },
-      {
-        headerName: 'ราคาต่อหน่วย',
-        field: 'template_link_detail.per_price',
-        minWidth: 150,
-        editable: () => true,
-        valueSetter: calculateValueSetter,
-        aggFunc: 'sum',
-      },
       ...generateGridCurrent(
         {
           monthValueSetter: monthValueSetter,
-          currentYearGetter:
-            'getValue("template_link_detail.per_price") * getValue("template_link_detail.quantity_request")',
         },
         gridRef,
         false,
@@ -285,7 +252,6 @@ export default function DurableGoods() {
     ],
     [calculateValueSetter, monthValueSetter, t],
   )
-
   return (
     <>
       <Box className="absolute top-[62px] right-[80px] ml-2 px-[8px] py-[7px]">

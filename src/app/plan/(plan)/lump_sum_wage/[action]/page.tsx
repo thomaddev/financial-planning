@@ -154,6 +154,7 @@ export default function LumpSumWage() {
     return false
   }, [])
 
+
   const columnDefs = useMemo<ColDef[]>(
     () => [
       {
@@ -190,28 +191,10 @@ export default function LumpSumWage() {
         maxWidth: 120,
       },
       {
-        headerName: t('fields.budget_account_code'),
-        field: 'template_link_detail.fund_account.title',
-        minWidth: 160,
-        maxWidth: 160,
-        editable: false,
-      },
-      {
         headerName: t('fields.title'),
         field: 'template_link_detail.title',
-        minWidth: 150,
-        editable: false,
-      },
-      {
-        headerName: t('fields.contract_no'),
-        field: 'template_link_detail.contract_no',
-        minWidth: 150,
-        editable: false,
-      },
-      {
-        headerName: t('fields.service_type'),
-        field: 'template_link_detail.service_type',
-        minWidth: 150,
+        minWidth: 160,
+        maxWidth: 160,
         editable: false,
       },
       ...generateGridCurrent(
