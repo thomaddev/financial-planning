@@ -1,7 +1,7 @@
 'use client'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid2'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Typography from '@mui/material/Typography'
 import {
   RowSelectedEvent,
@@ -81,9 +81,21 @@ export default function Home() {
 
   const monthValueSetter = useCallback((params: any, field: string) => {
     const { data, colDef, newValue } = params
-    const sumOfMonths = Object.keys(data).filter((value) => 
-      ['january', 'february', 'march', 'april', 'may', 'june', 
-       'july', 'august', 'september', 'october', 'november', 'december'].includes(value)
+    const sumOfMonths = Object.keys(data).filter((value) =>
+      [
+        'january',
+        'february',
+        'march',
+        'april',
+        'may',
+        'june',
+        'july',
+        'august',
+        'september',
+        'october',
+        'november',
+        'december',
+      ].includes(value),
     )
     const summary = removeDuplicates([...sumOfMonths, field]).reduce((acc, fieldName) => {
       let fieldValue = data[fieldName] || 0
@@ -378,155 +390,159 @@ export default function Home() {
   const submitMultiPlanning = async () => {
     try {
       // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
       // Get current data
       const currentData = getPlanningData()
-      
+
       // Update the data
       const updatedData = {
         ...currentData,
-        data: currentData.data.map(item => {
+        data: currentData.data.map((item) => {
           if (rowSelect.includes(item.record_name)) {
-            return { ...item, docstatus: 1 };
+            return { ...item, docstatus: 1 }
           }
-          return item;
-        })
-      };
-      
+          return item
+        }),
+      }
+
       // Save to localStorage
-      localStorage.setItem('planningData', JSON.stringify(updatedData));
+      localStorage.setItem('planningData', JSON.stringify(updatedData))
 
       // deselect all rows
-      gridRef.current?.api.deselectAll();
-      setRowSelect([]);
-      
+      gridRef.current?.api.deselectAll()
+      setRowSelect([])
+
       // Close any open dialogs
-      handleClose();
+      handleClose()
     } catch (error) {
-      console.error('Failed to submit planning:', error);
+      console.error('Failed to submit planning:', error)
     }
-  };
+  }
 
   return (
-    <Box className="flex flex-col h-full ">
-      <Grid container className="px-[39px] py-[33px] flex justify-between">
-        <Box>
-          <Typography variant="h6" className="font-medium text-[var(--text-default-default)]">
-            {t('my_budget_plan')}
-          </Typography>
-        </Box>
-        <Box className="hidden">
-          <Box className="flex items-center gap-4">
-            <Switch checked={isVerify} onChange={() => setIsVerify(!isVerify)} />
-            {isVerify && (
-              <>
-                <ActionButton
-                  name={'บันทึก'}
-                  disabled={rowSelect.length === 0}
-                  onClick={submitMultiPlanning}
-                />
-                <ActionButton name={'ยกเลิก'} variant="error" disabled={rowSelect.length === 0} />
-              </>
-            )}
+    <Suspense fallback={<>Loading...</>}>
+      <Box className="flex flex-col h-full ">
+        <Grid container className="px-[39px] py-[33px] flex justify-between">
+          <Box>
+            <Typography variant="h6" className="font-medium text-[var(--text-default-default)]">
+              {t('my_budget_plan')}
+            </Typography>
           </Box>
-        </Box>
-      </Grid>
+          <Box className="hidden">
+            <Box className="flex items-center gap-4">
+              <Switch checked={isVerify} onChange={() => setIsVerify(!isVerify)} />
+              {isVerify && (
+                <>
+                  <ActionButton
+                    name={'บันทึก'}
+                    disabled={rowSelect.length === 0}
+                    onClick={submitMultiPlanning}
+                  />
+                  <ActionButton name={'ยกเลิก'} variant="error" disabled={rowSelect.length === 0} />
+                </>
+              )}
+            </Box>
+          </Box>
+        </Grid>
 
-      {/* Tab filters */}
-      <Box className="px-[39px] flex justify-between">
-        <Tabs
-          value={activeTab}
-          onChange={handleTabChange}
-          className="min-h-[39px]"
-          sx={{
-            '& .MuiTabs-indicator': {
-              backgroundColor: 'var(--background-brand-default)',
-            },
-            '&.MuiTabs-root': {
-              marginBottom: 0,
-            },
-            '& .MuiTab-root': {
-              minHeight: '39px',
-              textTransform: 'none',
-              color: 'var(--text-default-secondary)',
-              '&.Mui-selected': {
-                color: 'var(--text-default-default)',
+        {/* Tab filters */}
+        <Box className="px-[39px] flex justify-between">
+          <Tabs
+            value={activeTab}
+            onChange={handleTabChange}
+            className="min-h-[39px]"
+            sx={{
+              '& .MuiTabs-indicator': {
+                backgroundColor: 'var(--background-brand-default)',
               },
-            },
-          }}
-        >
-          {tabs.map((tab) => (
-            <Tab
-              key={tab.value}
-              value={tab.value}
-              label={
-                <Box className="flex items-center gap-2">
-                  <span>{tab.label}</span>
-                  <span
-                    className={
-                      activeTab === tab.value
-                        ? `px-1.5 py-0.5 text-xs rounded-[3px] bg-[var(--background-brand-default)] text-[var(--text-default-white)]`
-                        : `px-1.5 py-0.5 text-xs rounded-[3px] bg-[var(--background-default-secondary)] text-[var(--text-default-secondary)]`
-                    }
-                  >
-                    {tab.count}
-                  </span>
-                </Box>
-              }
-            />
-          ))}
-        </Tabs>
-        <Box className="flex items-center gap-4">
-          <Typography className="text-sm text-[var(--text-default-secondary)]">เเสดง</Typography>
-          <Typography
-            className="text-sm text-[var(--text-default-default)]"
-            sx={{ textDecoration: 'dotted underline' }}
+              '&.MuiTabs-root': {
+                marginBottom: 0,
+              },
+              '& .MuiTab-root': {
+                minHeight: '39px',
+                textTransform: 'none',
+                color: 'var(--text-default-secondary)',
+                '&.Mui-selected': {
+                  color: 'var(--text-default-default)',
+                },
+              },
+            }}
           >
-            เดือน
-          </Typography>
-          {/* <Box className="h-4 w-[1px] bg-[var(--border-default-default)]" /> */}
-          <Typography className="text-sm text-[var(--text-default-secondary)]">เริ่มจาก</Typography>
-          <Box
-            component="span"
-            sx={{ textDecoration: 'dotted underline', display: 'inline-flex', gap: '4px' }}
-          >
-            <Typography className="text-sm text-[var(--text-default-default)]">
-              {dayjs().format('MMMM')}
+            {tabs.map((tab) => (
+              <Tab
+                key={tab.value}
+                value={tab.value}
+                label={
+                  <Box className="flex items-center gap-2">
+                    <span>{tab.label}</span>
+                    <span
+                      className={
+                        activeTab === tab.value
+                          ? `px-1.5 py-0.5 text-xs rounded-[3px] bg-[var(--background-brand-default)] text-[var(--text-default-white)]`
+                          : `px-1.5 py-0.5 text-xs rounded-[3px] bg-[var(--background-default-secondary)] text-[var(--text-default-secondary)]`
+                      }
+                    >
+                      {tab.count}
+                    </span>
+                  </Box>
+                }
+              />
+            ))}
+          </Tabs>
+          <Box className="flex items-center gap-4">
+            <Typography className="text-sm text-[var(--text-default-secondary)]">เเสดง</Typography>
+            <Typography
+              className="text-sm text-[var(--text-default-default)]"
+              sx={{ textDecoration: 'dotted underline' }}
+            >
+              เดือน
             </Typography>
-            <Typography className="text-sm text-[var(--text-default-default)]">
-              {dayjs().year() + 543}
+            {/* <Box className="h-4 w-[1px] bg-[var(--border-default-default)]" /> */}
+            <Typography className="text-sm text-[var(--text-default-secondary)]">
+              เริ่มจาก
             </Typography>
+            <Box
+              component="span"
+              sx={{ textDecoration: 'dotted underline', display: 'inline-flex', gap: '4px' }}
+            >
+              <Typography className="text-sm text-[var(--text-default-default)]">
+                {dayjs().format('MMMM')}
+              </Typography>
+              <Typography className="text-sm text-[var(--text-default-default)]">
+                {dayjs().year() + 543}
+              </Typography>
+            </Box>
           </Box>
         </Box>
-      </Box>
 
-      <Box className="h-full">
-        <AgGridReact
-          className="ag-my-board"
-          ref={gridRef}
-          statusBar={statusBar}
-          theme={myTheme}
-          rowData={listPlanning?.data ?? []}
-          columnDefs={colDefs}
-          defaultColDef={defaultColDef}
-          onRowDoubleClicked={onRowClicked}
-          loading={isLoadingListPlanning}
-          groupDisplayType={'custom'}
-          noRowsOverlayComponent={CustomNoRowsOverlay}
-          gridOptions={gridOptions}
-          rowSelection={rowSelection}
-          selectionColumnDef={selectionColumnDef}
-          groupDefaultExpanded={1}
-          onRowSelected={onRowSelected}
-          pagination={false}
-          noRowsOverlayComponentParams={{
-            isImage: true,
-            title: 'ไม่มีข้อมูล',
-            description: 'ไม่พบข้อมูลที่ต้องการ',
-          }}
-        />
+        <Box className="h-full">
+          <AgGridReact
+            className="ag-my-board"
+            ref={gridRef}
+            statusBar={statusBar}
+            theme={myTheme}
+            rowData={listPlanning?.data ?? []}
+            columnDefs={colDefs}
+            defaultColDef={defaultColDef}
+            onRowDoubleClicked={onRowClicked}
+            loading={isLoadingListPlanning}
+            groupDisplayType={'custom'}
+            noRowsOverlayComponent={CustomNoRowsOverlay}
+            gridOptions={gridOptions}
+            rowSelection={rowSelection}
+            selectionColumnDef={selectionColumnDef}
+            groupDefaultExpanded={1}
+            onRowSelected={onRowSelected}
+            pagination={false}
+            noRowsOverlayComponentParams={{
+              isImage: true,
+              title: 'ไม่มีข้อมูล',
+              description: 'ไม่พบข้อมูลที่ต้องการ',
+            }}
+          />
+        </Box>
       </Box>
-    </Box>
+    </Suspense>
   )
 }

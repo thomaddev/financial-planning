@@ -29,7 +29,7 @@ const encryptLicenseKey = (licenseKey: string) => {
 const loadAgGridLicense = () => {
   try {
     if (process.env.AG_GRID_LICENSE_PATH) {
-      const licensePath = path.resolve(process.cwd(), process.env.AG_GRID_LICENSE_PATH!) // Path inside Docker or server
+      const licensePath = path.resolve(process.cwd(), process.env.AG_GRID_LICENSE_PATH!)
       if (!fs.existsSync(licensePath)) throw new Error('License file not found')
       const licenseKey = fs.readFileSync(licensePath, 'utf8').trim()
       console.log('✅ AG Grid License Loaded on Server (File Path)')
@@ -49,18 +49,14 @@ const loadAgGridLicense = () => {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const rawLicenseKey = loadAgGridLicense()
   const encryptedLicense = encryptLicenseKey(rawLicenseKey)
-
   const session = await getSession()
-
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages()
 
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>
         <Providers session={session} licenseKey={encryptedLicense}>
-          <NextIntlClientProvider messages={messages}>
+          <NextIntlClientProvider messages={messages} locale="en">
             <Toaster />
             {children}
             {process.env.NODE_ENV === 'development' && (

@@ -13,8 +13,14 @@ const nextConfig: NextConfig = {
       'dhtmlx-gantt',
     ],
   },
-  /* Build the project as a standalone app inside the Docker image */
-  output: 'standalone',
+  // Enable React strict mode for better development experience
+  reactStrictMode: true,
+  // Enable image optimization
+  images: {
+    domains: [], // Add any external image domains you need here
+  },
+  // Enable production source maps for better debugging
+  productionBrowserSourceMaps: true,
 }
 
 export default withNextIntl(nextConfig)
