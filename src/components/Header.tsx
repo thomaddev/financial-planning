@@ -39,7 +39,7 @@ export default function Header() {
             </Link>
           </Grid>
           <Grid
-            size={{ sm: 8 }}
+            size={{ sm: 9 }}
             display={'flex'}
             justifyContent={'flex-start'}
             alignItems={'center'}
