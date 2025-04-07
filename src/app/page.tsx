@@ -130,8 +130,6 @@ export default function Home() {
   return (
     <Box className="container mx-auto px-4 py-8">
       <h1
-        // variant="h5"
-        // component="h1"
         className="mb-8 
        font-(--titleform-fontweight) text-(length:--titleform-size) text-[var(--text-default-default)]"
       >

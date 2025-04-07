@@ -14,13 +14,13 @@ const nextConfig: NextConfig = {
     ],
   },
   // Enable React strict mode for better development experience
-  reactStrictMode: true,
+  // reactStrictMode: true,
   // Enable image optimization
-  images: {
-    domains: [], // Add any external image domains you need here
-  },
+  // images: {
+  //   domains: [], // Add any external image domains you need here
+  // },
   // Enable production source maps for better debugging
-  productionBrowserSourceMaps: true,
+  // productionBrowserSourceMaps: true,
 }
 
 export default withNextIntl(nextConfig)

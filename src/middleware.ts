@@ -9,8 +9,8 @@ const publicPages = ['/login', '/auth', '/oauth-callback']
 // Create the next-intl middleware
 const intlMiddleware = createMiddleware({
   locales,
-  defaultLocale: 'en',
-  localePrefix: 'never'
+  defaultLocale: 'th',
+  localePrefix: 'always'
 })
 
 export async function middleware(request: NextRequest) {
@@ -31,7 +31,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // Handle internationalization
-  return intlMiddleware(request)
+  return NextResponse.next()
 }
 
 // Apply middleware to specific routes

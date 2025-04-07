@@ -4,7 +4,7 @@ import path from 'path'
 import { getSession } from '@/auth'
 import Providers from './providers'
 import './globals.css'
-import { getMessages } from 'next-intl/server'
+import { getLocale, getMessages } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
 import { Toaster } from 'react-hot-toast'
 import dynamic from 'next/dynamic'
@@ -51,19 +51,20 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const encryptedLicense = encryptLicenseKey(rawLicenseKey)
   const session = await getSession()
   const messages = await getMessages()
+  const locale = await getLocale()
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body suppressHydrationWarning>
-        <Providers session={session} licenseKey={encryptedLicense}>
-          <NextIntlClientProvider messages={messages} locale="en">
+        <NextIntlClientProvider messages={messages} >
+          <Providers session={session} licenseKey={encryptedLicense}>
             <Toaster />
             {children}
             {process.env.NODE_ENV === 'development' && (
               <ReactQueryDevtools initialIsOpen={false} position="left" />
             )}
-          </NextIntlClientProvider>
-        </Providers>
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   )
