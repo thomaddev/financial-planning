@@ -30,7 +30,7 @@ export default function Header() {
           <Grid size={{ sm: 1 }}>
             <Link href="/" className="block relative w-full h-[29px] flex items-center">
               <Image
-                src="/images/vise_logo.svg"
+                src="/next.svg"
                 alt="VISE Logo"
                 fill
                 priority
