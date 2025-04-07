@@ -14,7 +14,10 @@ const intlMiddleware = createMiddleware({
 })
 
 export async function middleware(request: NextRequest) {
-  const token = await getToken({ req: request })
+  const token = await getToken({ req: request, cookieName:
+    process.env.NODE_ENV === 'production'
+        ? '__Secure-next-auth.session-token'
+        : 'next-auth.session-token', })
   // const token = request.cookies.get('__Secure-next-auth.session-token') || request.cookies.get('next-auth.session-token');
   const isAuthPage = request.nextUrl.pathname.startsWith('/auth')
   const isPublicPage = publicPages.some(page => request.nextUrl.pathname.startsWith(page))
