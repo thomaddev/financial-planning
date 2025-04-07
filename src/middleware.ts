@@ -19,6 +19,9 @@ export async function middleware(request: NextRequest) {
   const isAuthPage = request.nextUrl.pathname.startsWith('/auth')
   const isPublicPage = publicPages.some(page => request.nextUrl.pathname.startsWith(page))
 
+  console.log('token', token)
+  console.log('isPublicPage', isPublicPage)
+  console.log('isAuthPage', isAuthPage)
   // Handle authentication
   if (!token && !isPublicPage) {
     // Redirect to login if not authenticated
@@ -27,7 +30,7 @@ export async function middleware(request: NextRequest) {
 
   if (token && isAuthPage) {
     // Redirect to dashboard if authenticated and trying to access auth page
-    return NextResponse.redirect(new URL('/dashboard', request.url))
+    return NextResponse.redirect(new URL('/plan/my-board', request.url))
   }
 
   // Handle internationalization
