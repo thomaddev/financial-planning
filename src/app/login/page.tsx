@@ -101,6 +101,12 @@ export default function LoginPage() {
             </button>
           </div>
         </form>
+        
+        <div className="mt-4 text-center text-sm text-gray-600">
+          <p>Guest User Credentials:</p>
+          <p className="mt-1">Username: admin</p>
+          <p>Password: hiadmin</p>
+        </div>
       </div>
     </div>
   );
