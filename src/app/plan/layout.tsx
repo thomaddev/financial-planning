@@ -16,9 +16,8 @@ const LayoutPlan = ({ children }: { children: ReactNode }) => {
 
   return (
     <React.Fragment>
-            <Header />
-
-      <div className="flex h-[calc(100vh-var(--header-height))]">
+      <Header />
+      <div className="flex flex-col sm:flex-row h-[calc(100vh-var(--header-height))]">
         <Sidebar />
         <div className="flex-1">{children}</div>
       </div>

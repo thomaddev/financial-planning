@@ -135,7 +135,7 @@ function CardItem({ href, Icon, title, description }: CardItemProps) {
         <DialogContent dividers>
           <Box className="overflow-y-auto  ">
             <Grid container spacing={3}>
-              <Grid size={{ xs: 6 }}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
                   label="Company"
@@ -166,7 +166,7 @@ function CardItem({ href, Icon, title, description }: CardItemProps) {
                 />
               </Grid>
 
-              <Grid size={{ xs: 6 }}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
                   label="Strategy"
@@ -197,7 +197,7 @@ function CardItem({ href, Icon, title, description }: CardItemProps) {
                 />
               </Grid>
 
-              <Grid size={{ xs: 6 }}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
                   label="Activity"
@@ -228,7 +228,7 @@ function CardItem({ href, Icon, title, description }: CardItemProps) {
                 />
               </Grid>
 
-              <Grid size={{ xs: 6 }}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
                   label="Objective"

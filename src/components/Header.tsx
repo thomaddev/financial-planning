@@ -23,11 +23,12 @@ export default function Header() {
       >
         <Grid
           container
-          columnSpacing={8}
+          columnSpacing={{ xs: 0, sm: 0, md: 0, xl: 8 }}
           alignItems={'center'}
-          sx={{ height: '100%', paddingX: 5 }}
+          className="px-[18px] md:px-[24px]"
+          // sx={{ height: '100%', paddingX: 5 }}
         >
-          <Grid size={{ sm: 1 }}>
+          <Grid className="hidden md:block" size={{ xs: 1, sm: 1, md: 1, xl: 1 }}>
             <Link href="/" className="block relative w-full h-[29px] flex items-center">
               <Image
                 src="/next.svg"
@@ -39,7 +40,7 @@ export default function Header() {
             </Link>
           </Grid>
           <Grid
-            size={{ sm: 9 }}
+            size={{ xs: 11, sm: 11, md: 11, xl: 9 }}
             display={'flex'}
             justifyContent={'flex-start'}
             alignItems={'center'}
@@ -83,7 +84,7 @@ export default function Header() {
             </nav>
           </Grid>
           <Grid
-            size={{ sm: 2 }}
+            size={{ xs: 1, sm: 1, md: 1, xl: 2 }}
             display={'flex'}
             justifyContent={'flex-end'}
             alignItems={'center'}
